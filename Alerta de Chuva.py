@@ -1,4 +1,5 @@
-import pyautogui as pat
+# Alerta de Chuva
+import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -41,7 +42,7 @@ if (tipodechuva != "Não há chuva"):
     time.sleep(1)
    navegador.find_element("xpath",'//*[@id="side"]/div[1]/div/div/div[2]/div/div[2]').send_keys(contato)
    navegador.find_element("xpath",'//*[@id="side"]/div[1]/div/div/div[2]/div/div[2]').send_keys(Keys.ENTER)
-   navegador.find_element("xpath",'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta de Chuva! Olá, {contato}! Já pode tirar o seu guarda-chuva do armário, hoje irá chover com uma precipitação de {chuvaflt:.0f}mm. Status da chuva: {tipodechuva}.")
+   navegador.find_element("xpath",'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta de Chuva! Olá, {contato}! Já pode tirar o seu guarda-chuva do armário, hoje irá chover com uma precipitação de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
    navegador.find_element("xpath",'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
    time.sleep(5)
    
