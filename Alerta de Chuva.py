@@ -7,15 +7,18 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import os
 
-contato = "importante" # Nome do contato para o qual será enviado o aviso via Whatsapp
+contato = 'importante' # Nome do contato para o qual será enviado o aviso via Whatsapp
+hora = '09:00' # Horário no qual o código será executado e a mensagem será enviada.
+CHROME_DATA_PATH = "user-data-dir=C:\\Users\\Usuario\\AppData\\Local\\Google\\Chrome\\User Data\\Default" # Path das configurações do Chrome
 
 # Definir as configurações do webdriver para o navegador pessoal
-CHROME_DATA_PATH = "user-data-dir=C:\\Users\\Usuario\\AppData\\Local\\Google\\Chrome\\User Data\\Default"
+
 os.system("taskkill /im chrome.exe /f")
 options = webdriver.ChromeOptions()
 options.add_argument(CHROME_DATA_PATH)
 
 # Coletar a informação
+
 def AlertadeChuva():
   navegador = webdriver.Chrome(executable_path='chromedriver.exe', options=options)
 
@@ -30,6 +33,7 @@ def AlertadeChuva():
   print(chuvaflt)
 
 # Definir a intensidade da chuva
+
   tipodechuva = str
   if (chuvaflt == 0):
     tipodechuva = "Não há chuva"
@@ -55,7 +59,7 @@ def AlertadeChuva():
     navegador.find_element("xpath",'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
     time.sleep(5)
     
-schedule.every(1).days.at('09:00').do(AlertadeChuva)
+schedule.every(1).days.at(hora).do(AlertadeChuva)
 while 1:
   schedule.run_pending()
   time.sleep(1)
