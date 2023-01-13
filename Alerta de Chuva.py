@@ -22,9 +22,10 @@ navegador.get("https://www.climatempo.com.br/previsao-do-tempo/cidade/321/riodej
 chuva = navegador.find_element("xpath",'//*[@id="mainContent"]/div[4]/div[5]/div[1]/div[2]/div[2]/div[2]/div[1]/ul/li[2]/div/span').get_attribute("innerText")
 print(chuva)
 
+
 # Tratar o dado
 
-chuvaflt = float(chuva[0:2])
+chuvaflt = float(chuva.split("mm")[0])
 print(chuvaflt)
 
 # Definir a intensidade da chuva
@@ -53,7 +54,6 @@ if (tipodechuva != "Não há chuva"):
    navegador.find_element("xpath",'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta de Chuva! Olá, {contato}! Já pode tirar o seu guarda-chuva do armário, hoje irá chover com uma precipitação de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
    navegador.find_element("xpath",'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
    time.sleep(5)
-  
    
    
 
