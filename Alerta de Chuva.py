@@ -7,9 +7,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-contato = ['contato1', 'contato2']  # Lista com o nome dos contatos para os quais serão enviados os avisos via Whatsapp
+contato = ['importante', 'Gabriela Duarte', 'Circuito Cervejeiro', 'A MASSA']  # Lista com o nome dos contatos para os quais serão enviados os avisos via Whatsapp
 # Horário no qual o código será executado e a mensagem será enviada.
-hora = '09:00'
+hora = '09:30'
 # Path das configurações do Chrome
 CHROME_DATA_PATH = "user-data-dir=C:\\Users\\Administrador\\AppData\\Local\\Google\\Chrome\\User Data\\Default"
 
@@ -39,7 +39,7 @@ def AlertadeChuva():
     tipodechuva = str
     if (chuvaflt == 0):
         tipodechuva = "Não há chuva"
-    if (chuvaflt < 5):
+    if (chuvaflt > 0 and chuvaflt < 5):
         tipodechuva = "Chuva fraca"
     if (chuvaflt >= 5 and chuvaflt <= 25):
         tipodechuva = "Chuva moderada"
@@ -47,10 +47,10 @@ def AlertadeChuva():
         tipodechuva = "Chuva forte"
     if (chuvaflt > 50):
         tipodechuva = "Chuva muito forte"
-    print(tipodechuva)
+    print(f"Tipo de chuva: {tipodechuva}")
 
 # Enviar alerta de chuva
-    if (tipodechuva != "Não há chuva"):
+    if (chuvaflt > 0):
         navegador.get("https://web.whatsapp.com/")
         time.sleep(12)
         # Esperar o whatsapp conectar com o QRCode
@@ -59,12 +59,37 @@ def AlertadeChuva():
         for x in contato:
             navegador.find_element("xpath", '//*[@id="side"]/div[1]/div/div/div[2]/div/div[2]').send_keys(x)
             navegador.find_element("xpath", '//*[@id="side"]/div[1]/div/div/div[2]/div/div[2]').send_keys(Keys.ENTER)
-            navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta de Chuva! Olá, {x}! Já pode tirar o seu guarda-chuva do armário, hoje irá chover com uma precipitação de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
-            navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
-            print(f"Mensagem enviada para {x}!")
+            if (chuvaflt > 0 and chuvaflt < 5):
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! De acordo com o ClimaTempo, hoje irá chover levemente com uma precipitação baixa de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
+                print(f"Mensagem enviada para {x}!")
+            if (chuvaflt >= 5 and chuvaflt <= 25):
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! Já pode tirar o seu guarda-chuva do armário! De acordo com o ClimaTempo, hoje irá chover moderadamente com uma precipitação de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
+                print(f"Mensagem enviada para {x}!")
+            if (chuvaflt > 25 and chuvaflt <= 50):
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! Prepare-se para o dia de hoje e leve o seu guarda-chuva com você! De acordo com o ClimaTempo, hoje irá chover fortemente com uma precipitação de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
+                print(f"Mensagem enviada para {x}!")
+            if (chuvaflt > 50):
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! Cuidado! De acordo com o ClimaTempo, hoje teremos pancadas de chuvacom uma precipitação alta de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
+                print(f"Mensagem enviada para {x}!")      
             time.sleep(5)
     else:
         print("Hoje não chove.")
+        navegador.get("https://web.whatsapp.com/")
+        time.sleep(12)
+        # Esperar o whatsapp conectar com o QRCode
+        while len(navegador.find_elements(By.ID, 'side')) < 1:
+            time.sleep(1)
+        for x in contato:
+            navegador.find_element("xpath", '//*[@id="side"]/div[1]/div/div/div[2]/div/div[2]').send_keys(x)
+            navegador.find_element("xpath", '//*[@id="side"]/div[1]/div/div/div[2]/div/div[2]').send_keys(Keys.ENTER)
+            navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys("Alerta Diário de Chuva! De acordo com o ClimaTempo, hoje não irá chover na cidade do Rio de Janeiro.")
+            navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
+            print(f"Mensagem enviada para {x}!")
+            time.sleep(5)
     print("Aguardando o próximo horário de envio.")            
 
 
