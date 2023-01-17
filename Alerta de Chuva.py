@@ -7,7 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-contato = ['importante', 'Gabriela Duarte', 'Circuito Cervejeiro', 'A MASSA']  # Lista com o nome dos contatos para os quais serão enviados os avisos via Whatsapp
+contato = ['contato1', 'contato2', 'contato3', 'contato4']  # Lista com o nome dos contatos para os quais serão enviados os avisos via Whatsapp
 # Horário no qual o código será executado e a mensagem será enviada.
 hora = '09:30'
 # Path das configurações do Chrome
@@ -64,15 +64,15 @@ def AlertadeChuva():
                 navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
                 print(f"Mensagem enviada para {x}!")
             if (chuvaflt >= 5 and chuvaflt <= 25):
-                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! Já pode tirar o seu guarda-chuva do armário! De acordo com o ClimaTempo, hoje irá chover moderadamente com uma precipitação de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! De acordo com o ClimaTempo, hoje irá chover moderadamente com uma precipitação de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
                 navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
                 print(f"Mensagem enviada para {x}!")
             if (chuvaflt > 25 and chuvaflt <= 50):
-                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! Prepare-se para o dia de hoje e leve o seu guarda-chuva com você! De acordo com o ClimaTempo, hoje irá chover fortemente com uma precipitação de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! Atenção! Prepare-se para o dia de hoje e leve o seu guarda-chuva com você! De acordo com o ClimaTempo, hoje irá chover fortemente com uma precipitação de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
                 navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
                 print(f"Mensagem enviada para {x}!")
             if (chuvaflt > 50):
-                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! Cuidado! De acordo com o ClimaTempo, hoje teremos pancadas de chuvacom uma precipitação alta de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! Cuidado! Evite sair de casa! De acordo com o ClimaTempo, a previsão para o dia de hoje é de pancadas de chuva com uma precipitação alta de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
                 navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
                 print(f"Mensagem enviada para {x}!")      
             time.sleep(5)
