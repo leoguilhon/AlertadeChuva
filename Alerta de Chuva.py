@@ -60,19 +60,19 @@ def AlertadeChuva():
             navegador.find_element("xpath", '//*[@id="side"]/div[1]/div/div/div[2]/div/div[2]').send_keys(x)
             navegador.find_element("xpath", '//*[@id="side"]/div[1]/div/div/div[2]/div/div[2]').send_keys(Keys.ENTER)
             if (chuvaflt > 0 and chuvaflt < 5):
-                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! De acordo com o ClimaTempo, hoje irá chover levemente com uma precipitação baixa de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! De acordo com o ClimaTempo, hoje poderá ocorrer chuva fraca, com precipitação média de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
                 navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
                 print(f"Mensagem enviada para {x}!")
             if (chuvaflt >= 5 and chuvaflt <= 25):
-                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! De acordo com o ClimaTempo, hoje irá chover moderadamente com uma precipitação de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! De acordo com o ClimaTempo, hoje poderá ocorrer chuva moderada, com precipitação média de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
                 navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
                 print(f"Mensagem enviada para {x}!")
             if (chuvaflt > 25 and chuvaflt <= 50):
-                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! Atenção! Prepare-se para o dia de hoje e leve o seu guarda-chuva com você! De acordo com o ClimaTempo, hoje irá chover fortemente com uma precipitação de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! Atenção! Prepare-se para o dia de hoje e leve o seu guarda-chuva com você! De acordo com o ClimaTempo, hoje poderá ocorrer chuva forte, com precipitação de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
                 navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
                 print(f"Mensagem enviada para {x}!")
             if (chuvaflt > 50):
-                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! Cuidado! Evite sair de casa! De acordo com o ClimaTempo, a previsão para o dia de hoje é de pancadas de chuva com uma precipitação alta de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
+                navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(f"Alerta Diário de Chuva! Olá, {x}! Cuidado! Evite sair de casa sem necessidade. De acordo com o ClimaTempo, a previsão para o dia de hoje é de chuva muito forte com precipitação alta de {chuvaflt:.0f}mm na cidade do Rio de Janeiro. Status da chuva: {tipodechuva}.")
                 navegador.find_element("xpath", '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p').send_keys(Keys.ENTER)
                 print(f"Mensagem enviada para {x}!")      
             time.sleep(5)
