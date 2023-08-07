@@ -9,9 +9,9 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-contato = ['importante', 'Gabriela']  # Lista com o nome dos contatos para os quais serão enviados os avisos via Whatsapp
+contato = ['contato 1', 'contato 2']  # Lista com o nome dos contatos para os quais serão enviados os avisos via Whatsapp
 # Horário no qual o código será executado e a mensagem será enviada.
-hora = '23:47'
+hora = '07:00'
 # Path das configurações do Chrome
 CHROME_DATA_PATH = "user-data-dir=C:\\Users\\Administrador\\AppData\\Local\\Google\\Chrome\\User Data\\Default"
 
